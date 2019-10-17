@@ -5,7 +5,7 @@ oc process grafana-template \
     -p LOKI_SERVICE_NAME=loki \
     -p PROMETHEUS_SERVICE_NAME=prometheus \
     -p ROUTE_SUBDOMAIN=pathfinder.gov.bc.ca \
-    -p NAMESPACE=[dev namespace] \
+    -p NAMESPACE=4zq6uj-pdittaro-ocp201-tst-dev \
     | oc apply -f -
 
 oc process prometheus-template
