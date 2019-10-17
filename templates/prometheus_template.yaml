@@ -1,5 +1,18 @@
 kind: Template
-metadata: {}
+metadata: 
+  annotations:
+    description: |-
+      Prometheus Template for use in OpenShift 201 lab without persistent storage. 
+
+      WARNING: Any configuration stored will be lost upon pod destruction. ConfigMaps should be used for codified configuration. 
+    iconClass: icon-other-unknown
+    openshift.io/display-name: prometheus-openshift201
+    openshift.io/documentation-url: https://github.com/pdittaro/devops-platform-workshops
+    openshift.io/long-description: This template provides a sample Prometheus configuration for lab purposes.
+    openshift.io/provider-display-name: BCDevOps
+    openshift.io/support-url: https://github.com/bcdevops/
+    tags: monitoring,prometheus
+  name: prometheus-template
 apiVersion: v1
 parameters:
   - description: The namespace this templated is deployed into.
