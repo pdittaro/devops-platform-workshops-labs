@@ -91,7 +91,7 @@ node {
 
  stage('Create PROD') {
   openshift.withCluster() {
-   openshift.withProject("${DEV_NAMESPACE}") {
+   openshift.withProject("${PROD_NAMESPACE}") {
     def blackboxdcSelector = openshift.selector("dc", "blackboxexporter")
     try {
      blackboxdcSelector.object()
