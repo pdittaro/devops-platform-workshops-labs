@@ -15,6 +15,6 @@ oc process prometheus-template \
     -p NAMESPACE=4zq6uj-pdittaro-ocp201-tst-dev \
     | oc apply -f -
 
-oc process loki-template
-    -p LOKI_SERVICE_NAME=loki
+oc process loki-template \
+    -p LOKI_SERVICE_NAME=loki \
     | oc apply -f -
