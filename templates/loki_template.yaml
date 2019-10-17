@@ -18,7 +18,7 @@ metadata:
     tags: monitoring,loki
   name: loki-template
 parameters:
-  - name: NAME
+  - name: LOKI_SERVICE_NAME
     value: loki
 objects:
   - apiVersion: v1
