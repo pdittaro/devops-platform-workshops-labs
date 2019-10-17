@@ -74,6 +74,21 @@ node {
    }
   }
  }
+
+ stage('Testing') {
+        parallel (
+            'load test': {
+                sh "echo load test"
+            },
+            'security test': {
+                sh "echo security test"
+            },
+            'e2e test': {
+                echo "e2e test"
+            }
+        )
+ }
+
  stage('Acceptance') {
     script {
     def IS_APPROVED = input(message: "Deploy to PROD?", ok: "yes", parameters: [string(name: 'IS_APPROVED', defaultValue: 'yes', description: 'Deploy to PROD?')])
