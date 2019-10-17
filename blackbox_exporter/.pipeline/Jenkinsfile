@@ -74,4 +74,36 @@ node {
    }
   }
  }
+ stage('Acceptance') {
+    script {
+    def IS_APPROVED = input(message: "Deploy to PROD?", ok: "yes", parameters: [string(name: 'IS_APPROVED', defaultValue: 'yes', description: 'Deploy to PROD?')])
+        if (IS_APPROVED != 'yes') {
+            currentBuild.result = "ABORTED"
+            error "User cancelled"
+        }
+    }
+ }
+  stage('Promote to PROD    ') {
+  openshift.withCluster() {
+   openshift.tag("blackboxexporter:latest", "blackboxexporter:prod")
+  }
+ }
+
+ stage('Create PROD') {
+  openshift.withCluster() {
+   openshift.withProject("${DEV_NAMESPACE}") {
+    def blackboxdcSelector = openshift.selector("dc", "blackboxexporter")
+    try {
+     blackboxdcSelector.object()
+     deploymentconfig = blackboxdcSelector.related("deploymentconfig")
+    } catch (Throwable t) {
+     na = openshift.newApp("${TOOLS_NAMESPACE}/blackboxexporter:prod", "--name=blackboxexporter").narrow('svc').expose()
+
+     // Print out information about the objects created by newBuild
+     // echo "newApp created: ${na.count()} objects : ${na.names()}"
+
+    }
+   }
+  }
+ }
 }
