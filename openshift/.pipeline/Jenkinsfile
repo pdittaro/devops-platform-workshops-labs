@@ -63,7 +63,7 @@ node {
                     -p PROMETHEUS_SERVICE_NAME=${PROMETHEUS_SERVICE} \
                     -p ROUTE_HOST=${PROMETHEUS_SERVICE} \
                     -p ROUTE_SUBDOMAIN=${SUBDOMAIN} \
-                    -p NAMESPACE=${DEV_NAMESPACE} \ | oc apply -f - -n ${DEV_NAMESPACE}"
+                    -p NAMESPACE=${DEV_NAMESPACE} | oc apply -f - -n ${DEV_NAMESPACE}"
 
                 sh "echo Wait for service to be up"
                 timeout (time: 180, unit: 'SECONDS'){
