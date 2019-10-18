@@ -59,8 +59,8 @@ node {
      }
     }
    },
-   'Deploy Prometheus':
-   dir('simple_pipeline') {
+   'Deploy Prometheus': {
+   dir('simple_pipeline') 
     {
      checkout scm
      sh "ls -lha openshift/templates"
