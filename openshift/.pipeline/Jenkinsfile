@@ -16,7 +16,7 @@ node {
 
  stage('Checkout'){
      dir('simple_pipeline'){
-         checkout scm
+        checkout scm
      }
  }
 
@@ -42,7 +42,6 @@ node {
    },
    'Deploy Grafana': {
     dir('simple_pipeline') {
-     checkout scm
      sh "ls -lha openshift/templates"
 
      sh "oc process -f openshift/templates/grafana_template.yaml \
@@ -67,7 +66,6 @@ node {
    'Deploy Prometheus': {
    dir('simple_pipeline') 
     {
-     checkout scm
      sh "ls -lha openshift/templates"
 
      sh "oc process -f openshift/templates/prometheus_template.yaml \
