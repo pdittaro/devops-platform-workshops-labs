@@ -215,7 +215,7 @@ objects:
   - apiVersion: route.openshift.io/v1
     kind: Route
     spec:
-      host: ${ROUTE_HOST}.${ROUTE_SUBDOMAIN}
+      host: ${ROUTE_HOST}-${NAMESPACE}.${ROUTE_SUBDOMAIN}
       port:
         targetPort: http
       to:
