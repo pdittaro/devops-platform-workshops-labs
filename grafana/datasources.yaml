@@ -1,0 +1,19 @@
+  # config file version
+  apiVersion: 1
+
+  datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    orgId: 1
+    url: http://pdittaro-prometheus-pdittaro-prometheus:80  
+    isDefault: true
+    version: 1
+    editable: true
+  - name: Loki
+    type: loki
+    orgId: 1
+    access: proxy
+    url: http://pdittaro-loki:3100  
+    jsonData:
+        maxLines: 1000
